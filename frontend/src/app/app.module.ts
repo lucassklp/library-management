@@ -9,6 +9,9 @@ import { ListBooksComponent } from './pages/list-books/list-books.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -31,7 +34,10 @@ export function createTranslateLoader(http: HttpClient) {
           useFactory: (createTranslateLoader),
           deps: [HttpClient]
       }
-    })
+    }),
+    MatTableModule,
+    MatPaginatorModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

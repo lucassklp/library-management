@@ -2,17 +2,85 @@
     {{ "list-book" | translate }}
 </h1>
 
-<div *ngFor="let book of books$ | async">
-    <ng-content></ng-content>
 
-    <ng-container *ngIf="book.thumbnail$ | async as thumb; else loading">
-        <img *ngIf="thumb.exists; else noImage" [src]="thumb.url"/>
-        <ng-template #noImage>
-            No Image
-        </ng-template>
-    </ng-container>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
   
-    <ng-template #loading>
-        Loading
-    </ng-template>
-</div>
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element"> 
+            
+            <ng-container *ngIf="typed(element).thumbnail$ | async as thumb; else loading">
+                <img *ngIf="thumb.exists; else noImage" [src]="thumb.url"/>
+                <ng-template #noImage>
+                    No Image
+                </ng-template>
+            </ng-container>
+          
+            <ng-template #loading>
+                Loading
+            </ng-template>
+        
+        </td>
+      </ng-container>
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="isbn">
+        <th mat-header-cell *matHeaderCellDef> ISBN </th>
+        <td mat-cell *matCellDef="let element"> {{element.isbn}} </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="isAvailable">
+        <th mat-header-cell *matHeaderCellDef> isAvailable </th>
+        <td mat-cell *matCellDef="let element"> 
+            <mat-slide-toggle>Slide me!</mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <td mat-cell *matCellDef="let element"> {{element.returnDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="owner">
+        <th mat-header-cell *matHeaderCellDef> owner </th>
+        <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="loanDate">
+        <th mat-header-cell *matHeaderCellDef> Loan Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.loanDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="returnDate">
+        <th mat-header-cell *matHeaderCellDef> Return Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.returnDate}} </td>
+      </ng-container>
+
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons 
+                   (page)="changePage($event)"
+                   aria-label="Select page">
+    </mat-paginator>
+  </div>
+  
