@@ -1,4 +1,4 @@
-package com.crossjoin.library.management.config
+package com.crossjoin.library.management.configs
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
