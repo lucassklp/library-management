@@ -3,31 +3,36 @@ package com.crossjoin.library.management.entities
 import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
 data class Book(
         @Id
-        val id: Int,
+        @GeneratedValue
+        var id: Int,
 
         @Column
-        val title: String,
+        var title: String,
 
         @Column
-        val description: String,
+        var description: String,
 
         @Column
-        val isbn: String,
+        var isbn: String,
 
         @Column
-        val isAvailable: Boolean,
+        var isAvailable: Boolean,
 
         @Column
-        val notes: String,
+        var notes: String,
 
         @Column
-        val returnDate: LocalDate?,
+        var owner: String?,
 
         @Column
-        val loanDate: LocalDate?
+        var returnDate: LocalDate?,
+
+        @Column
+        var loanDate: LocalDate?
 )

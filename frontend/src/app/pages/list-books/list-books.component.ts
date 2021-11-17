@@ -12,7 +12,7 @@ export class ListBooksComponent implements OnInit {
 
   books$: Observable<Book[]>
   constructor(private bookServices: BookService) { 
-    this.books$ = bookServices.listBooks();
+    this.books$ = bookServices.listBooks(0, 20);
   }
 
   ngOnInit(): void {

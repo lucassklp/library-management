@@ -3,5 +3,12 @@ import { Thumbnail } from "./thumbnail";
 
 export type Book = {
     id: number
+    title: string,
+    description: string,
+    isbn: string,
+    isAvailable: boolean,
+    notes: string,
+    returnDate?: Date,
+    loanDate?: Date
     thumbnail$: Observable<Thumbnail>
 }
