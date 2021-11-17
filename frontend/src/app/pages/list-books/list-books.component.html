@@ -1,0 +1,18 @@
+<h1>
+    {{ "list-book" | translate }}
+</h1>
+
+<div *ngFor="let book of books$ | async">
+    <ng-content></ng-content>
+
+    <ng-container *ngIf="book.thumbnail$ | async as thumb; else loading">
+        <img *ngIf="thumb.exists; else noImage" [src]="thumb.url"/>
+        <ng-template #noImage>
+            No Image
+        </ng-template>
+    </ng-container>
+  
+    <ng-template #loading>
+        Loading
+    </ng-template>
+</div>

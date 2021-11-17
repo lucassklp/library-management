@@ -1,5 +1,6 @@
 package com.crossjoin.library.management.entities
 
+import java.time.LocalDate
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
@@ -7,7 +8,7 @@ import javax.persistence.Id
 @Entity
 data class Book(
         @Id
-        val id: String,
+        val id: Int,
 
         @Column
         val title: String,
@@ -19,5 +20,14 @@ data class Book(
         val isbn: String,
 
         @Column
-        val isAvailable: Boolean
+        val isAvailable: Boolean,
+
+        @Column
+        val notes: String,
+
+        @Column
+        val returnDate: LocalDate?,
+
+        @Column
+        val loanDate: LocalDate?
 )
