@@ -43,4 +43,14 @@ class BookService @Autowired constructor(private val bookRepository: BookReposit
         it.isAvailable = true
         bookRepository.save(it)
     }
+
+    fun delete(id: Int) = bookRepository.deleteById(id)
+
+    fun edit(id: Int, dto: BookDto) = bookRepository.findById(id).map {
+        it.isbn = dto.isbn
+        it.description = dto.description
+        it.title = dto.title
+        it.notes = dto.notes
+        bookRepository.save(it)
+    }
 }

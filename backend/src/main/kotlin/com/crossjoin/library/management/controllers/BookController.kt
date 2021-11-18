@@ -15,12 +15,21 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/book")
 class BookController @Autowired constructor(private val bookService: BookService) {
 
-    @PostMapping
-    fun create(@RequestBody book: BookDto) = bookService.create(book)
-
     @GetMapping
     fun list(@RequestParam("page") page: Int, @RequestParam("size") size: Int) =
             bookService.list(PageRequest.of(page, size))
+
+    @PostMapping
+    fun create(@RequestBody book: BookDto) = bookService.create(book)
+
+    @PutMapping("{id}")
+    fun edit(@PathVariable("id") id: Int, @RequestBody dto: BookDto): ResponseEntity<Book> = bookService.edit(id, dto)
+            .map { ResponseEntity.ok(it) }
+            .orElseGet { ResponseEntity.notFound().build() }
+
+    @DeleteMapping("{id}")
+    fun delete(@PathVariable("id") id: Int) = bookService.delete(id)
+
 
     @PutMapping("{id}/lend")
     fun lendBook(@PathVariable("id") id: Int, @RequestBody dto: LendBookDto): ResponseEntity<Book> {

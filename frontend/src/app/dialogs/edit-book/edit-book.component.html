@@ -1,8 +1,8 @@
 <h1>
-    Add a book
+    Edit a book
 </h1>
 
 <app-book-form [form]="form"></app-book-form>
 
-<button mat-raised-button [disabled]="form.invalid" (click)="addBook()" color="primary">Add book</button>
+<button mat-raised-button [disabled]="form.invalid" (click)="editBook()" color="primary">Edit book</button>
 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>

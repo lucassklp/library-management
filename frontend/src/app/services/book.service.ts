@@ -34,6 +34,14 @@ export class BookService {
     return this.http.put<Book>(`/api/book/${id}/receive`, null);
   }
 
+  edit(id: number, dto: BookDto): Observable<Book> {
+    return this.http.put<Book>(`/api/book/${id}`, dto)
+  }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`/api/book/${id}`)
+  }
+
   getThumbnailByIsbn(isbn: string): Observable<Thumbnail>{
     return this.http.get<any>(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`)
       .pipe(map(response => {

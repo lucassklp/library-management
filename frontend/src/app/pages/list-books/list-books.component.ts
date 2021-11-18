@@ -7,6 +7,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddBookComponent } from 'src/app/dialogs/add-book/add-book.component';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LendBookComponent } from 'src/app/dialogs/lend-book/lend-book.component';
+import { ConfirmDialogComponent } from 'src/app/dialogs/confirm-dialog/confirm-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
+import { EditBookComponent } from 'src/app/dialogs/edit-book/edit-book.component';
 
 @Component({
   selector: 'app-list-books',
@@ -26,15 +29,16 @@ export class ListBooksComponent implements OnInit {
     'notes',
     'owner',
     'loanDate',
-    'deliveryDate'
+    'deliveryDate',
+    'actions'
   ];
   dataSource = new MatTableDataSource<Book>();
 
   page = 0;
   size = 5;
 
-  constructor(private bookServices: BookService, private dialog: MatDialog) { 
-    this.fetch(this.page, this.size)
+  constructor(private bookServices: BookService, private dialog: MatDialog, private translateService: TranslateService) { 
+    this.fetch()
   }
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class ListBooksComponent implements OnInit {
 
   lendOrDeliverBook(id: number, event: MatSlideToggleChange){
     if(event.checked){
-      this.bookServices.receiveBook(id).subscribe(_ => this.fetch(this.page, this.size))
+      this.bookServices.receiveBook(id).subscribe(_ => this.fetch())
     } else {
       const dialogRef = this.dialog.open(LendBookComponent);
       dialogRef.componentInstance.id = id;
@@ -51,7 +55,7 @@ export class ListBooksComponent implements OnInit {
         if(!result){
           event.source.checked = true;
         } else {
-          this.fetch(this.page, this.size)
+          this.fetch()
         }
       });
     }
@@ -61,7 +65,7 @@ export class ListBooksComponent implements OnInit {
     const dialogRef = this.dialog.open(AddBookComponent);
     dialogRef.afterClosed().subscribe(result => {
       if(result){
-        this.fetch(this.page, this.size)
+        this.fetch()
       }
     });
 
@@ -78,12 +82,30 @@ export class ListBooksComponent implements OnInit {
   changePage(pageEvent: PageEvent){
     this.page = pageEvent.pageIndex;
     this.size = pageEvent.pageSize;
-    this.fetch(this.page, this.size)
+    this.fetch()
   }
 
-  fetch(page: number, size: number) {
-    this.bookServices.listBooks(page, size)
+  fetch() {
+    this.bookServices.listBooks(this.page, this.size)
       .subscribe(books => this.dataSource.data = books)
+  }
+
+  edit(book: Book){
+    const dialogRef = this.dialog.open(EditBookComponent);
+    dialogRef.componentInstance.book = book;
+    dialogRef.componentInstance.id = book.id;
+    dialogRef.afterClosed().subscribe(_ => this.fetch());
+  }
+
+  delete(id: number){
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+    dialogRef.componentInstance.title = this.translateService.instant("delete-book.title");
+    dialogRef.componentInstance.description = this.translateService.instant("delete-book.message");
+    dialogRef.afterClosed().subscribe(confirmed => {
+      if(confirmed){
+        this.bookServices.delete(id).subscribe(_ => this.fetch())
+      }
+    });
   }
 
 }

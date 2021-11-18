@@ -21,6 +21,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { MatCardModule } from '@angular/material/card';
+import { EditBookComponent } from './dialogs/edit-book/edit-book.component';
+import { BookFormComponent } from './forms/book-form/book-form.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -32,7 +37,10 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     AddBookComponent,
     ListBooksComponent,
-    LendBookComponent
+    LendBookComponent,
+    ConfirmDialogComponent,
+    EditBookComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +64,9 @@ export function createTranslateLoader(http: HttpClient) {
     MatNativeDateModule,
     MatDatepickerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
