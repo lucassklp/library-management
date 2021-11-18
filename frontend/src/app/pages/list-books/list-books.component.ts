@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { AddBookComponent } from '../add-book/add-book.component';
+import { AddBookComponent } from 'src/app/dialogs/add-book/add-book.component';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { LendBookComponent } from 'src/app/dialogs/lend-book/lend-book.component';
 
