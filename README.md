@@ -8,6 +8,8 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+Finally you can access `http://localhost:8080` to access the page
+
 ### Running locally
 
 To run locally, you will need to have a running instance of MySQL.
