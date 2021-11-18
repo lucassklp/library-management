@@ -18,9 +18,5 @@ data class BookDto (
 
         @field:NotNull
         @field:NotBlank
-        val isAvailable: Boolean,
-
-        @field:NotNull
-        @field:NotBlank
         val notes: String
 )

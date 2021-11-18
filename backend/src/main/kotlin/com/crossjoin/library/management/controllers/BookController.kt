@@ -29,4 +29,11 @@ class BookController @Autowired constructor(private val bookService: BookService
                 .orElseGet { ResponseEntity.notFound().build() }
     }
 
+    @PutMapping("{id}/receive")
+    fun receiveBook(@PathVariable("id") id: Int): ResponseEntity<Book> {
+        return bookService.receiveBook(id)
+                .map { ResponseEntity.ok(it) }
+                .orElseGet { ResponseEntity.notFound().build() }
+    }
+
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
+import java.time.LocalDate
 import java.util.*
 
 @Service
@@ -18,10 +19,10 @@ class BookService @Autowired constructor(private val bookRepository: BookReposit
         title = dto.title,
         description = dto.description,
         isbn = dto.isbn,
-        isAvailable = dto.isAvailable,
+        isAvailable = true,
         notes = dto.notes,
         loanDate = null,
-        returnDate = null,
+        deliveryDate = null,
         owner = null
     ))
 
@@ -29,9 +30,17 @@ class BookService @Autowired constructor(private val bookRepository: BookReposit
 
     fun lendBook(id: Int, dto: LendBookDto): Optional<Book> = bookRepository.findById(id).map {
         it.owner = dto.owner
-        it.loanDate = dto.loanDate
-        it.returnDate = dto.returnDate
+        it.loanDate = LocalDate.now()
+        it.deliveryDate = dto.deliveryDate
         it.isAvailable = false
+        bookRepository.save(it)
+    }
+
+    fun receiveBook(id: Int): Optional<Book> = bookRepository.findById(id).map {
+        it.owner = null
+        it.deliveryDate = null
+        it.loanDate = null
+        it.isAvailable = true
         bookRepository.save(it)
     }
 }

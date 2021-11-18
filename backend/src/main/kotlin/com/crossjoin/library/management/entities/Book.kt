@@ -31,7 +31,7 @@ data class Book(
         var owner: String?,
 
         @Column
-        var returnDate: LocalDate?,
+        var deliveryDate: LocalDate?,
 
         @Column
         var loanDate: LocalDate?

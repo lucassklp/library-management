@@ -8,7 +8,7 @@ export type Book = {
     isbn: string,
     isAvailable: boolean,
     notes: string,
-    returnDate?: Date,
+    deliveryDate?: Date,
     loanDate?: Date
     thumbnail$: Observable<Thumbnail>
 }

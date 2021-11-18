@@ -26,8 +26,12 @@ export class BookService {
     return this.http.post<Book>('/api/book', book);
   }
   
-  lendBook(book: LendBookDto): Observable<Book> {
-    return this.http.put<Book>('/api/book', book);
+  lendBook(id: number, book: LendBookDto): Observable<Book> {
+    return this.http.put<Book>(`/api/book/${id}/lend`, book);
+  }
+
+  receiveBook(id: number): Observable<Book> {
+    return this.http.put<Book>(`/api/book/${id}/receive`, null);
   }
 
   getThumbnailByIsbn(isbn: string): Observable<Thumbnail>{
