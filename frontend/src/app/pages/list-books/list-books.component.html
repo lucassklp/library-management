@@ -1,14 +1,13 @@
-<h1>
-    {{ "list-book" | translate }}
-</h1>
+<h1>{{ "list-book" | translate }}</h1>
 
-<button mat-raised-button (click)="addBook()" color="primary">Primary</button>
+<button mat-raised-button (click)="addBook()" color="primary">
+  <mat-icon>add</mat-icon> {{'add-book-title' | translate}}
+</button>
 
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
-  
       <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'cover' | translate }} </th>
         <td mat-cell *matCellDef="let element"> 
             
             <ng-container *ngIf="typed(element).thumbnail$ | async as thumb; else loading">
@@ -26,49 +25,49 @@
       </ng-container>
 
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'id' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
       </ng-container>
 
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'title' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.title}} </td>
       </ng-container>
   
       <ng-container matColumnDef="isbn">
-        <th mat-header-cell *matHeaderCellDef> ISBN </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'isbn' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.isbn}} </td>
       </ng-container>
   
       <ng-container matColumnDef="isAvailable">
-        <th mat-header-cell *matHeaderCellDef> isAvailable </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'is-available' | translate }} </th>
         <td mat-cell *matCellDef="let element"> 
             <mat-slide-toggle [checked]="element.isAvailable" (change)="lendOrDeliverBook(element.id, $event)"></mat-slide-toggle>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="notes">
-        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'notes' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
       </ng-container>
 
       <ng-container matColumnDef="owner">
-        <th mat-header-cell *matHeaderCellDef> owner </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'name-current-owner' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.owner}} </td>
       </ng-container>
 
       <ng-container matColumnDef="loanDate">
-        <th mat-header-cell *matHeaderCellDef> Loan Date </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'loan-date' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.loanDate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="deliveryDate">
-        <th mat-header-cell *matHeaderCellDef> Return Date </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'delivery-date' | translate }} </th>
         <td mat-cell *matCellDef="let element"> {{element.deliveryDate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <th mat-header-cell *matHeaderCellDef> {{ 'actions' | translate }} </th>
         <td mat-cell *matCellDef="let element">
 
           <button mat-mini-fab color="primary" (click)="edit(element)">

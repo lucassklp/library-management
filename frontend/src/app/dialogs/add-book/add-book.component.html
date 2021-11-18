@@ -1,8 +1,6 @@
-<h1>
-    Add a book
-</h1>
+<h1> {{ 'add-book-title' | translate }}</h1>
 
 <app-book-form [form]="form"></app-book-form>
 
-<button mat-raised-button [disabled]="form.invalid" (click)="addBook()" color="primary">Add book</button>
-<button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+<button mat-raised-button [disabled]="form.invalid" (click)="addBook()" color="primary">{{ 'add' | translate }}</button>
+<button mat-raised-button (click)="cancel()" color="warn"> {{ 'cancel' | translate }} </button>

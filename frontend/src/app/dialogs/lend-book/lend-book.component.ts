@@ -45,7 +45,6 @@ export class LendBookComponent implements OnInit {
 
     this.bookService.lendBook(this.id!, lendBookDto)
       .subscribe(e => {
-        console.log(e)
         this.dialogRef.close(e)
       })
 

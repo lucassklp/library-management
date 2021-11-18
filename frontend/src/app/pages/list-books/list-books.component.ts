@@ -62,7 +62,7 @@ export class ListBooksComponent implements OnInit {
   }
 
   addBook(){
-    const dialogRef = this.dialog.open(AddBookComponent);
+    const dialogRef = this.dialog.open(AddBookComponent, { width: "450px" } );
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.fetch()
@@ -91,7 +91,7 @@ export class ListBooksComponent implements OnInit {
   }
 
   edit(book: Book){
-    const dialogRef = this.dialog.open(EditBookComponent);
+    const dialogRef = this.dialog.open(EditBookComponent, { width: "450px" });
     dialogRef.componentInstance.book = book;
     dialogRef.componentInstance.id = book.id;
     dialogRef.afterClosed().subscribe(_ => this.fetch());

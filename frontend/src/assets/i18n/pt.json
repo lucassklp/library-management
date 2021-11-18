@@ -1,3 +1,32 @@
 {
-    "list-book": "Listagem dos livros"
+    "list-book": "Listagem dos livros",
+    "add-book-title": "Adicionar um livro",
+    "add": "Adicionar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "edit": "Editar",
+    "edit-book-title": "Editar um livro",
+    "lend-book-title": "Emprestar um livro",
+    "name-owner": "Nome do novo portador",
+    "ex-name-owner": "Ex: João Silva",
+    "delivery-date": "Data de entrega",
+    "lend-book-btn": "Efetuar emprestimo",
+    "title": "Título",
+    "ex-title": "Ex. Harry Potter",
+    "description": "Descrição",
+    "ex-description": "Ex. Harry Potter is a series of seven fantasy novels written by British author J.K. Rowling.",
+    "isbn": "ISBN",
+    "ex-isbn": "Ex: 9876543210",
+    "notes": "Notas",
+    "ex-notes": "A capa do livro está riscada",
+    "cover": "Foto da capa",
+    "id": "Id",
+    "is-available": "Disponível para empréstimo",
+    "name-current-owner": "Nome do portador",
+    "loan-date": "Data do empréstimo",
+    "actions": "Ações",
+    "delete-book": {
+        "title": "Deletar livro",
+        "message": "Você tem certeza que deseja deletar esse livro?"
+    }
 }

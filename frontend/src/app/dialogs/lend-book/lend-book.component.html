@@ -1,25 +1,23 @@
-<h1>
-    Lend a book
-</h1>
+<h1> {{ 'lend-book-title' | translate }} </h1>
 
 <form [formGroup]="form">
 
     <p>
         <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Name of new owner</mat-label>
-            <input matInput formControlName="owner" placeholder="Ex. John Doe">
+            <mat-label> {{ 'name-owner' | translate }} </mat-label>
+            <input matInput formControlName="owner" placeholder="{{ 'ex-name-owner' | translate }}">
         </mat-form-field>
     </p>
 
     <p>
         <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Choose the delivery date</mat-label>
+            <mat-label> {{ 'delivery-date' | translate }} </mat-label>
             <input matInput [matDatepickerFilter]="dateFilter" formControlName="date" [matDatepicker]="picker">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>    
     </p>
 
-    <button mat-raised-button [disabled]="form.invalid" (click)="lendBook()" color="primary">Lend book</button>
-    <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+    <button mat-raised-button [disabled]="form.invalid" (click)="lendBook()" color="primary"> {{ 'lend-book-btn' | translate }}</button>
+    <button mat-raised-button (click)="cancel()" color="warn"> {{ 'cancel' | translate}} </button>
 </form>

@@ -1,3 +1,32 @@
 {
-    "list-book": "List of books"
+    "list-book": "List of books",
+    "add-book-title": "Add a book",
+    "add": "Add",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "edit-book-title": "Edit a book",
+    "lend-book-title": "Lend a book",
+    "name-owner": "Name of new bearer",
+    "ex-name-owner": "Ex John Doe",
+    "delivery-date": "Delivery Date",
+    "lend-book-btn": "Lend the book",
+    "title": "Title",
+    "ex-title": "Ex. Harry Potter",
+    "description": "Description",
+    "ex-description": "Ex. Harry Potter is a series of seven fantasy novels written by British author J.K. Rowling.",
+    "isbn": "ISBN",
+    "ex-isbn": "Ex: 9876543210",
+    "notes": "Notes",
+    "ex-notes": "The cover of the book is scratched",
+    "cover": "Book's cover",
+    "id": "Id",
+    "is-available": "Available for loan",
+    "name-current-owner": "Bearer's name",
+    "loan-date": "Loan date",
+    "actions": "Actions",
+    "delete-book": {
+        "title": "Delete book",
+        "message": "Are you sure you want to delete this book?"
+    }
 }
